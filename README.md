@@ -1,7 +1,7 @@
 cookiecutter-cpp
 ================
 
-A test-driven C++ project template built on cmake and GoogleTest
+A test-driven C++ project template built on CMake and GoogleTest
 
 [![Build Status]
     (https://travis-ci.org/hbristow/cookiecutter-cpp.svg)]
