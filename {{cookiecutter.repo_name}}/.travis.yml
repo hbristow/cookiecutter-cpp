@@ -1,8 +1,1 @@
-language: cpp
-
-compiler:
-    - gcc
-    - clang
-
-script:
-    - make test
+../.travis.yml

@@ -13,7 +13,8 @@ install:
     - sudo apt-get install doxygen
     - sudo pip install cookiecutter
 
-# Before script only required for wrapper {% if false %}
+# Custom setup actions
+# ...{% if false %}
 before_script:
     - cookiecutter --no-input .
     - cd rock
