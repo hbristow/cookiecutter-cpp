@@ -20,7 +20,6 @@ before_script:
     - cookiecutter --no-input .
     - cd rock
     - git add -f *
-    - make check-format
 # {% endif %}
 
 script:
