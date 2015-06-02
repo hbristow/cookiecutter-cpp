@@ -7,15 +7,17 @@ compiler:
     - clang
 
 install:
-    - sudo add-apt-repository --yes ppa:kalakris/cmake
+    - sudo add-apt-repository --yes ppa:george-edison55/cmake-3.x
     - sudo apt-get update -qq
     - sudo apt-get install cmake
     - sudo apt-get install doxygen
     - sudo pip install cookiecutter
 
+# Before script only required for wrapper {% if false %}
 before_script:
     - cookiecutter --no-input .
     - cd rock
+# {% endif %}
 
 script:
     - make test
