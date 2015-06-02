@@ -14,11 +14,13 @@ install:
     - sudo apt-get install doxygen
     - sudo pip install cookiecutter
 
-# Custom setup actions
 # ...{% if false %}
+# Test that the cookiecutter behaves correctly
 before_script:
     - cookiecutter --no-input .
     - cd rock
+    - git add *
+    - make check-format
 # {% endif %}
 
 script:
