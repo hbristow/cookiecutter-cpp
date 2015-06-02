@@ -8,6 +8,7 @@ before_script:
     - pip install --user cookiecutter
     - cookiecutter --no-input .
     - cd rock
+    - mkdir -p build
 
 script:
     - make test
