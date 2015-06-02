@@ -19,7 +19,7 @@ install:
 before_script:
     - cookiecutter --no-input .
     - cd rock
-    - git add *
+    - git add -f *
     - make check-format
 # {% endif %}
 
