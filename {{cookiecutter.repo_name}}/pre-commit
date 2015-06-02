@@ -43,37 +43,11 @@ check_format() {
     fi
 }
 
-# check_configure
-# check that cmake can configure the project
-check_configure() {
-    echo -n "${LOGGER} Configure... "
-    make cmake > /dev/null 2>&1
-    if [ $? -ne 0 ]; then
-        echo "FAILED"
-        exit 1
-    else
-        echo "PASSED"
-    fi
-}
-
-# check_compile
-# check that the code base compiles (implies configure passes)
-check_compile() {
-    echo -n "${LOGGER} Compile... "
-    make > /dev/null 2>&1
-    if [ $? -ne 0 ]; then
-        echo "FAILED"
-        exit 1
-    else
-        echo "PASSED"
-    fi
-}
-
 # check_test
 # check that the tests passed (implies compilation passes)
 check_test() {
     echo -n "${LOGGER} Tests... "
-    make test > /dev/null 2>&1
+    make test > /dev/null
     if [ $? -ne 0 ]; then
         echo "FAILED"
         exit 1
@@ -88,7 +62,5 @@ check_format
 {% endif %}
 {% if cookiecutter.pedantic -%}
 # run the test checks
-check_configure
-check_compile
 check_test
 {%- endif %}
