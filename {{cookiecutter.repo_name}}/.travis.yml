@@ -1,7 +1,8 @@
 language: cpp
 
-script: make test
-
 compiler:
     - gcc
     - clang
+
+script:
+    - make test

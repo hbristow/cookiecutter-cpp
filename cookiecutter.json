@@ -1,7 +1,7 @@
 {
-    "project_name": "{{ ('wrench', 'hammer', 'axe', 'crowbar') | random }}",
+    "project_name": "rock",
     "repo_name": "{{ cookiecutter.project_name }}",
-    "description": "The tool to use when none of the others seem to work",
+    "description": "A rock solid project with enforced style, testing and static analysis",
     "check_style": true,
     "pedantic": true,
     "version": "0.0.1",
