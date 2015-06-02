@@ -4,8 +4,10 @@ compiler:
     - gcc
     - clang
 
+before_script:
+    - pip install --user cookiecutter
+
 script:
-    - pip install cookiecutter
     - cookiecutter --no-input .
     - cd hammer
     - make test
