@@ -1,5 +1,6 @@
 # {{ cookiecutter.project_name }}
 # {{ cookiecutter.description }}
+# Copyright {{ cookiecutter.author }}, 2015
 cmake_minimum_required(VERSION 3.2.0)
 project({{ cookiecutter.project_name }} C CXX)
 set(PROJECT_DESCRIPTION   "{{ cookiecutter.description }}")
@@ -8,6 +9,10 @@ set(PROJECT_URL           "https://github.com/{{ cookiecutter.username }}/{{ coo
 set(PROJECT_VERSION_MAJOR "{{ cookiecutter.version.split('.')[0] }}")
 set(PROJECT_VERSION_MINOR "{{ cookiecutter.version.split('.')[1] }}")
 set(PROJECT_VERSION_PATCH "{{ cookiecutter.version.split('.')[2] }}")
+
+# Build flags
+set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -03 -march=native")
+{% if cookiecutter.pedantic %}set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wall -Wpedantic -Werror"){% endif %}
 
 # Dependencies
 include_directories(include)
