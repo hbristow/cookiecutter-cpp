@@ -8,6 +8,9 @@ test: configure
 	@ make {{ cookiecutter.project_name }}_test -C build
 	@ make test -C build
 
+install: all
+	@ make install -C build
+
 configure:
 	@ cd build && cmake ..
 
