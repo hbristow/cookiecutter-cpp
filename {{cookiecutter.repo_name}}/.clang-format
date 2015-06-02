@@ -1,0 +1,11 @@
+---
+# clang-format [options]
+# Styles based on Google Style Guide
+BasedOnStyle:           Google
+Language:               Cpp
+AccessModifierOffset:   -4
+IndentCaseLabels:       false
+IndentWidth:            4
+TabWidth:               4
+ColumnLimit:            100
+ConstructorInitializerIndentWidth: 8

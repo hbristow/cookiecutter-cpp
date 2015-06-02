@@ -1,0 +1,14 @@
+{
+    "project_name": "{{ ('wrench', 'hammer', 'axe', 'crowbar') | random }}",
+    "repo_name": "{{ cookiecutter.project_name }}",
+    "description": "The tool to use when none of the others seem to work",
+    "check_style": true,
+    "pedantic": true,
+    "version": "0.0.1",
+    "year": 2015,
+    "author": "First Last",
+    "email": "{{ cookiecutter.author.split()|join('.')|lower }}@gmail.com",
+    "username": "{{ cookiecutter.author|first|lower }}{{ cookiecutter.author.split()|last|lower }}",
+    "branch": "master",
+    "remote": "origin"
+}

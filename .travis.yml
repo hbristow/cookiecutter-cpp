@@ -1,0 +1,12 @@
+language: cpp
+
+compiler:
+    - gcc
+    - clang
+
+script:
+    - pip install cookiecutter
+    - cookiecutter --no-input .
+    - cd hammer
+    - make test
+    - make doc
