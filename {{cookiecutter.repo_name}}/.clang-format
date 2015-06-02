@@ -8,4 +8,6 @@ IndentCaseLabels:       false
 IndentWidth:            4
 TabWidth:               4
 ColumnLimit:            100
-ConstructorInitializerIndentWidth: 8
+AllowShortFunctionsOnASingleLine:   Inline
+AllowShortBlocksOnASingleLine:      false
+ConstructorInitializerIndentWidth:  8
