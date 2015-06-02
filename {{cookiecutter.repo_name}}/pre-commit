@@ -1,0 +1,94 @@
+#!/usr/bin/env bash
+#
+# [Code Reviewer]
+# Enforce coding guidelines before committing
+LOGGER="[code review]"
+
+
+# list_source_files
+# List the source files in the cache
+list_source_files() {
+    echo `{ git diff --name-only --diff-filter=ACRMT; \
+            git diff --name-only --diff-filter=ACRMT --cached; } | \
+          grep -E "\.(h|hpp|c|cpp|cxx)$"`
+}
+
+# style
+# Check the style of a single file
+check_single() {
+    `! clang-format -output-replacements-xml ${!1} | grep "<replacement " > /dev/null`
+    return $?
+}
+
+# check_format
+# Apply clang-format to each of the files and report the violations
+check_format() {
+    echo -n "${LOGGER} Style... "
+    # Check each of the files
+    for file in $(list_source_files); do
+        check_single file
+        if [ $? -ne 0 ]; then
+            violations="${violations}    ${file}\n"
+        fi
+    done
+
+    # Report violations
+    if [ -z "${violations}" ]; then
+        echo "PASSED"
+    else
+        echo "FAILED"
+        echo >&2 "${LOGGER} The following files violate style rules (run 'make format' to fix):"
+        printf "${violations}"
+        exit 1
+    fi
+}
+
+# check_configure
+# check that cmake can configure the project
+check_configure() {
+    echo -n "${LOGGER} Configure... "
+    make cmake > /dev/null 2>&1
+    if [ $? -ne 0 ]; then
+        echo "FAILED"
+        exit 1
+    else
+        echo "PASSED"
+    fi
+}
+
+# check_compile
+# check that the code base compiles (implies configure passes)
+check_compile() {
+    echo -n "${LOGGER} Compile... "
+    make > /dev/null 2>&1
+    if [ $? -ne 0 ]; then
+        echo "FAILED"
+        exit 1
+    else
+        echo "PASSED"
+    fi
+}
+
+# check_test
+# check that the tests passed (implies compilation passes)
+check_test() {
+    echo -n "${LOGGER} Tests... "
+    make test > /dev/null 2>&1
+    if [ $? -ne 0 ]; then
+        echo "FAILED"
+        exit 1
+    else
+        echo "PASSED"
+    fi
+}
+
+{% if cookiecutter.check_style -%}
+# run the style checks
+check_format
+{% endif %}
+{% if cookiecutter.pedantic -%}
+# run the test checks
+check_configure
+check_compile
+check_test
+{%- endif %}

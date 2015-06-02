@@ -10,3 +10,4 @@ if __name__ == '__main__':
     subprocess.call(('git', 'init'))
     subprocess.call(('git', 'checkout', '-b', branch))
     subprocess.call(('git', 'remote', 'add', remote, url))
+    subprocess.call(('mv', 'pre-commit', '.git/hooks/'))
