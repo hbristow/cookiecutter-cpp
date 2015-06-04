@@ -18,23 +18,11 @@ set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wall -Wextra -Werror -pedantic")
 
 
 # ---------------------------------------------------------
-# Export Modules
-# ---------------------------------------------------------
-# Target:   {{ cookiecutter.project_name }}_lib
-# Type:     Library
-file(GLOB SOURCE src/*.cpp)
-add_library({{ cookiecutter.project_name }}_lib SHARED ${SOURCE})
-set_target_properties({{ cookiecutter.project_name }}_lib PROPERTIES
-    "OUTPUT_NAME" "{{ cookiecutter.project_name }}"
-    "INCLUDE_DIRECTORIES" "${CMAKE_CURRENT_SOURCE_DIR}/include"
-)
-install(TARGETS {{ cookiecutter.project_name }}_lib EXPORT {{ cookiecutter.project_name }} DESTINATION ${CMAKE_SOURCE_DIR}/lib)
-export(TARGETS {{ cookiecutter.project_name }}_lib FILE ${CMAKE_BINARY_DIR}/{{ cookiecutter.project_name }}-config.cmake)
-
-
-# ---------------------------------------------------------
 # Features
 # ---------------------------------------------------------
+add_subdirectory(external)
+add_subdirectory(src)
+
 enable_testing()
 add_subdirectory(test)
 add_subdirectory(doc)
