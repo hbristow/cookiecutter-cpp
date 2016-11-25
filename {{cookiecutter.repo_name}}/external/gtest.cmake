@@ -7,8 +7,8 @@ include(ExternalProject)
 # Fetch GoogleTest remotely
 ExternalProject_Add(
     gtest
-    URL https://googletest.googlecode.com/files/gtest-1.7.0.zip
-    URL_MD5 2d6ec8ccdf5c46b05ba54a9fd1d130d7
+    URL https://github.com/google/googletest/archive/release-1.7.0.tar.gz
+    URL_MD5 4ff6353b2560df0afecfbda3b2763847
     PREFIX ${CMAKE_CURRENT_BINARY_DIR}
     # Disable INSTALL
     INSTALL_COMMAND ""
